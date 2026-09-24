@@ -1,0 +1,43 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="main-content">
+  <section class="page-banner">
+    <div class="page">
+      <p class="section-eyebrow" style="color:var(--amber-light)"><%= t('sell_hero_eyebrow') %></p>
+      <h1 class="section-title" style="color:#fff;font-size:2.2rem"><%= t('sell_hero_h1_a') %><span style="color:var(--amber-light)"><%= t('sell_hero_h1_highlight') %></span><%= t('sell_hero_h1_b') %></h1>
+      <p class="section-desc" style="color:#d3e1d5"><%= t('sell_hero_desc') %></p>
+      <div class="hero-metrics" style="color:#fff">
+        <div><p><%= t('metric1_num') %></p><p><%= t('metric1_label') %></p></div>
+        <div><p><%= t('metric2_num') %></p><p><%= t('metric2_label') %></p></div>
+        <div><p><%= t('metric3_num') %></p><p><%= t('metric3_label') %></p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page">
+    <%- include('partials/sell-form', { formAction: '/sell-your-tractor' }) %>
+  </div>
+
+  <section class="page" id="reviews">
+    <p class="section-eyebrow"><%= t('reviews_eyebrow') %></p>
+    <h2 class="section-title"><%= t('reviews_title') %></h2>
+    <div class="review-grid">
+      <% reviews.forEach(function(r) { %>
+        <div class="review-card">
+          <div class="review-stars">
+            <% for (var i = 0; i < r.rating; i++) { %><%- icons.star %><% } %>
+          </div>
+          <p class="review-text">"<%= r.text[lang] %>"</p>
+          <div class="review-author">
+            <span class="review-avatar"><%= r.name[lang].charAt(0) %></span>
+            <div>
+              <p class="review-name"><%= r.name[lang] %></p>
+              <p class="review-location"><%= r.location[lang] %></p>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </section>
+</main>
+<%- include('partials/footer') %>

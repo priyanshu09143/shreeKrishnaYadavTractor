@@ -1,0 +1,47 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="main-content">
+  <div class="page">
+    <h1><%= t('admin_services_title') %></h1>
+    <%- include('partials/admin-nav') %>
+
+    <div class="admin-services-grid">
+      <% services.forEach(function(s) { %>
+        <div class="admin-service-card">
+          <form method="POST" action="/admin/services/<%= s.id %>" class="form">
+            <label><%= t('admin_services_title_hi') %></label>
+            <input name="title_hi" value="<%= s.title_hi %>" required />
+            <label><%= t('admin_services_title_en') %></label>
+            <input name="title_en" value="<%= s.title_en %>" required />
+            <label><%= t('admin_services_desc_hi') %></label>
+            <textarea name="description_hi" rows="2"><%= s.description_hi %></textarea>
+            <label><%= t('admin_services_desc_en') %></label>
+            <textarea name="description_en" rows="2"><%= s.description_en %></textarea>
+            <label><%= t('admin_services_order') %></label>
+            <input type="number" name="sort_order" value="<%= s.sort_order %>" style="width:100px" />
+            <button class="btn btn-sm btn-primary" type="submit" style="margin-top:1rem"><%= t('admin_services_update') %></button>
+          </form>
+          <form method="POST" action="/admin/services/<%= s.id %>/delete">
+            <button class="btn btn-sm btn-outline" type="submit"><%= t('admin_services_delete') %></button>
+          </form>
+        </div>
+      <% }) %>
+    </div>
+
+    <h2 class="section-title" style="font-size:1.4rem;margin-top:2.5rem"><%= t('admin_services_add') %></h2>
+    <form method="POST" action="/admin/services" class="form" style="max-width:640px;margin-top:1rem">
+      <label><%= t('admin_services_title_hi') %></label>
+      <input name="title_hi" required />
+      <label><%= t('admin_services_title_en') %></label>
+      <input name="title_en" required />
+      <label><%= t('admin_services_desc_hi') %></label>
+      <textarea name="description_hi" rows="2"></textarea>
+      <label><%= t('admin_services_desc_en') %></label>
+      <textarea name="description_en" rows="2"></textarea>
+      <label><%= t('admin_services_order') %></label>
+      <input type="number" name="sort_order" value="<%= services.length + 1 %>" style="width:100px" />
+      <button class="btn btn-primary" type="submit"><%= t('admin_services_save') %></button>
+    </form>
+  </div>
+</main>
+<%- include('partials/footer') %>

@@ -1,0 +1,45 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="main-content">
+  <div class="page">
+    <h1><%= t('admin_messages_title') %></h1>
+    <%- include('partials/admin-nav') %>
+
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th><%= t('admin_messages_th_name') %></th>
+          <th><%= t('admin_messages_th_contact') %></th>
+          <th><%= t('admin_messages_th_service') %></th>
+          <th><%= t('admin_messages_th_message') %></th>
+          <th><%= t('admin_messages_th_date') %></th>
+          <th><%= t('admin_th_status') %></th>
+          <th><%= t('admin_th_actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% messages.forEach(function(m) { %>
+          <tr>
+            <td><%= m.name %></td>
+            <td><%= m.phone %><% if (m.email) { %><br /><span class="muted"><%= m.email %></span><% } %></td>
+            <td><%= m.service || '—' %></td>
+            <td style="max-width:260px"><%= m.message || '—' %></td>
+            <td><%= m.created_at %></td>
+            <td><span class="status-badge status-<%= m.status === 'new' ? 'pending' : 'approved' %>"><%= m.status %></span></td>
+            <td class="admin-actions">
+              <% if (m.status === 'new') { %>
+                <form method="POST" action="/admin/messages/<%= m.id %>/read">
+                  <button class="btn btn-sm btn-primary" type="submit"><%= t('admin_messages_mark_read') %></button>
+                </form>
+              <% } %>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% if (messages.length === 0) { %>
+      <p class="muted" style="margin-top:1.5rem"><%= lang === 'en' ? 'No messages yet.' : 'अभी तक कोई संदेश नहीं है।' %></p>
+    <% } %>
+  </div>
+</main>
+<%- include('partials/footer') %>

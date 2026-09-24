@@ -1,0 +1,117 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="main-content">
+  <div class="page-full">
+    <section class="hero" id="top" style="background-image:linear-gradient(to right, rgba(15,26,20,0.92), rgba(15,26,20,0.72) 55%, rgba(15,26,20,0.45)), url('<%= HERO_IMAGE %>')">
+      <div class="hero-inner" id="service-form">
+        <div>
+          <p class="hero-eyebrow"><%= t('services_eyebrow') %></p>
+          <h1><%= t('services_title') %></h1>
+          <p class="hero-desc"><%= t('services_hero_desc') %></p>
+        </div>
+
+        <% if (submitted) { %>
+          <div class="form" style="align-items:flex-start">
+            <span class="brand-mark" style="background:var(--green-tint-2);color:var(--green-600)"><%- icons.badgeCheck %></span>
+            <h3 class="section-title" style="font-size:1.4rem;margin-top:1rem"><%= t('contact_success_title') %></h3>
+            <p class="muted" style="margin-top:0.5rem"><%= t('contact_success_desc') %></p>
+            <a href="tel:<%= CONTACT.phoneTel %>" class="btn btn-primary" style="margin-top:1.5rem"><%- icons.phone %> <%= t('success_cta') %></a>
+          </div>
+        <% } else { %>
+        <form class="form" method="POST" action="/services">
+          <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--green-border);padding-bottom:1rem;margin-bottom:0.4rem">
+            <h3 class="section-title" style="font-size:1.3rem"><%= t('services_form_title') %></h3>
+            <span class="brand-mark" style="background:var(--green-tint-2);color:var(--green-600)"><%- icons.wrench %></span>
+          </div>
+
+          <label><%= t('label_select_service') %></label>
+          <select required name="service">
+            <option value=""><%= t('placeholder_select_service') %></option>
+            <% services.forEach(function(s) { %>
+              <option value="<%= lang === 'en' ? s.title_en : s.title_hi %>" <%= form.service === (lang === 'en' ? s.title_en : s.title_hi) ? 'selected' : '' %>><%= lang === 'en' ? s.title_en : s.title_hi %></option>
+            <% }) %>
+          </select>
+
+          <label><%= t('contact_label_name') %></label>
+          <input required name="name" placeholder="<%= t('placeholder_name') %>" value="<%= form.name || '' %>" />
+
+          <label><%= t('contact_label_phone') %></label>
+          <input required type="tel" name="phone" placeholder="<%= t('placeholder_phone') %>" value="<%= form.phone || '' %>" />
+
+          <label><%= t('contact_label_email') %></label>
+          <input type="email" name="email" value="<%= form.email || '' %>" />
+
+          <label><%= t('contact_label_message') %></label>
+          <textarea rows="3" name="message" placeholder="<%= t('contact_placeholder_message') %>"><%= form.message || '' %></textarea>
+
+          <% if (error) { %><p class="error"><%= error %></p><% } %>
+          <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center"><%= t('contact_submit') %> <%- icons.arrowUpRight %></button>
+        </form>
+        <% } %>
+      </div>
+    </section>
+
+    <section class="why-us" id="partners">
+      <div class="page">
+        <p class="section-eyebrow"><%= t('partners_eyebrow') %></p>
+        <h2 class="section-title"><%= t('partners_title') %></h2>
+      </div>
+      <div class="brand-marquee">
+        <div class="brand-marquee-track">
+          <div class="brand-marquee-group">
+            <% PARTNER_LOGOS.forEach(function(p) { %>
+              <img loading="lazy" decoding="async" src="/img/partners/<%= p.file %>" alt="<%= p.name %> logo" />
+            <% }) %>
+          </div>
+          <div class="brand-marquee-group" aria-hidden="true">
+            <% PARTNER_LOGOS.forEach(function(p) { %>
+              <img loading="lazy" decoding="async" src="/img/partners/<%= p.file %>" alt="" />
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="offerings">
+      <p class="section-eyebrow"><%= t('services_eyebrow') %></p>
+      <h2 class="section-title"><%= t('services_title') %></h2>
+      <p class="section-desc"><%= t('services_desc') %></p>
+
+      <% if (services.length === 0) { %>
+        <p class="muted" style="margin-top:1.5rem"><%= lang === 'en' ? 'No services listed yet.' : 'फिलहाल कोई सेवा उपलब्ध नहीं है।' %></p>
+      <% } %>
+      <div class="benefit-grid" style="margin-top:1.5rem">
+        <% services.forEach(function(s, i) { %>
+          <div class="benefit-card <%= i === 0 ? 'dark' : '' %>">
+            <div class="benefit-icon"><%- icons[s.icon] || icons.wrench %></div>
+            <h3><%= lang === 'en' ? s.title_en : s.title_hi %></h3>
+            <p><%= lang === 'en' ? s.description_en : s.description_hi %></p>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="page" id="reviews">
+      <p class="section-eyebrow"><%= t('reviews_eyebrow') %></p>
+      <h2 class="section-title"><%= t('reviews_title') %></h2>
+      <div class="review-grid">
+        <% reviews.forEach(function(r) { %>
+          <div class="review-card">
+            <div class="review-stars">
+              <% for (var i = 0; i < r.rating; i++) { %><%- icons.star %><% } %>
+            </div>
+            <p class="review-text">"<%= r.text[lang] %>"</p>
+            <div class="review-author">
+              <span class="review-avatar"><%= r.name[lang].charAt(0) %></span>
+              <div>
+                <p class="review-name"><%= r.name[lang] %></p>
+                <p class="review-location"><%= r.location[lang] %></p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </div>
+</main>
+<%- include('partials/footer') %>

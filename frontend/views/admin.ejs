@@ -1,0 +1,40 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="main-content">
+  <div class="page">
+    <h1><%= t('admin_title') %></h1>
+    <%- include('partials/admin-nav') %>
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th><%= t('admin_th_tractor') %></th>
+          <th><%= t('admin_th_seller') %></th>
+          <th><%= t('admin_th_price') %></th>
+          <th><%= t('admin_th_offer') %></th>
+          <th><%= t('admin_th_status') %></th>
+          <th><%= t('admin_th_actions') %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% listings.forEach(function(t2) { %>
+          <tr>
+            <td><%= t2.brand %> <%= t2.model %> (<%= t2.year %>)</td>
+            <td><%= t2.seller_name %><br /><span class="muted"><%= t2.seller_phone || t2.seller_email %></span></td>
+            <td>₹<%= t2.asking_price.toLocaleString('en-IN') %></td>
+            <td><%= t2.offered_price ? '₹' + t2.offered_price.toLocaleString('en-IN') : '—' %></td>
+            <td><span class="status-badge status-<%= t2.status %>"><%= t2.status %></span></td>
+            <td class="admin-actions">
+              <form method="POST" action="/admin/dashboard/<%= t2.id %>/status">
+                <input type="number" name="offered_price" placeholder="<%= t('admin_offer_placeholder') %>" class="offer-input" value="<%= t2.offered_price || '' %>" />
+                <button class="btn btn-sm btn-primary" name="status" value="approved"><%= t('admin_approve') %></button>
+                <button class="btn btn-sm btn-outline" name="status" value="rejected"><%= t('admin_reject') %></button>
+                <button class="btn btn-sm btn-outline" name="status" value="purchased"><%= t('admin_purchased') %></button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</main>
+<%- include('partials/footer') %>

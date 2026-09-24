@@ -1,0 +1,27 @@
+<header class="navbar">
+  <a href="/" class="brand">
+    <span class="brand-mark"><%- icons.tractor %></span>
+    <span class="brand-text">
+      <span class="brand-name"><%= t('brand_name') %></span>
+      <span class="brand-sub"><%= t('brand_sub') %> · <%= LOCATION %></span>
+    </span>
+  </a>
+  <nav class="nav-links">
+    <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>"><%= t('nav_home') %></a>
+    <a href="/services" class="<%= currentPath === '/services' ? 'active' : '' %>"><%= t('nav_services') %></a>
+    <a href="/about" class="<%= currentPath === '/about' ? 'active' : '' %>"><%= t('nav_about') %></a>
+    <a href="/contact" class="<%= currentPath === '/contact' ? 'active' : '' %>"><%= t('nav_contact') %></a>
+    <% if (user && user.role === 'admin') { %>
+      <a href="/admin/dashboard" class="<%= currentPath.startsWith('/admin') ? 'active' : '' %>"><%= t('nav_admin') %></a>
+      <form action="/logout" method="POST" style="display:inline">
+        <button type="submit" class="link-btn"><%= t('nav_logout') %></button>
+      </form>
+    <% } %>
+    <a href="tel:<%= CONTACT.phoneTel %>" class="nav-phone"><%- icons.phone %> <%= CONTACT.phoneDisplay %></a>
+    <div class="lang-toggle">
+      <a href="/lang/hi" class="<%= lang === 'hi' ? 'active' : '' %>">हिं</a>
+      <a href="/lang/en" class="<%= lang === 'en' ? 'active' : '' %>">EN</a>
+    </div>
+    <a href="/sell-your-tractor" class="btn btn-cta btn-sm"><%= t('nav_sell_cta') %> <%- icons.arrowUpRight %></a>
+  </nav>
+</header>

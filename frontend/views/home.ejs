@@ -1,0 +1,143 @@
+<%- include('partials/head') %>
+<%- include('partials/header') %>
+<main class="main-content">
+  <div class="page-full">
+    <section class="hero" id="top" style="background-image:linear-gradient(to right, rgba(15,26,20,0.92), rgba(15,26,20,0.72) 55%, rgba(15,26,20,0.45)), url('<%= HERO_IMAGE %>')">
+      <div class="hero-inner" id="sell-form">
+        <div>
+          <p class="hero-eyebrow"><%= t('hero_eyebrow') %></p>
+          <h1><%= t('hero_h1_a') %><span><%= t('hero_h1_highlight') %></span><%= t('hero_h1_b') %></h1>
+          <p class="hero-desc"><%= t('hero_desc') %></p>
+          <div class="hero-metrics">
+            <div><p><%= t('metric1_num') %></p><p><%= t('metric1_label') %></p></div>
+            <div><p><%= t('metric2_num') %></p><p><%= t('metric2_label') %></p></div>
+            <div><p><%= t('metric3_num') %></p><p><%= t('metric3_label') %></p></div>
+          </div>
+        </div>
+
+        <%- include('partials/sell-form', { formAction: '/' }) %>
+      </div>
+    </section>
+
+    <section class="why-us" id="why-us">
+      <div class="page">
+        <div class="why-us-head">
+          <div>
+            <p class="section-eyebrow"><%= t('whyus_eyebrow') %></p>
+            <h2 class="section-title"><%= t('whyus_title') %></h2>
+          </div>
+          <p class="section-desc"><%= t('whyus_desc') %></p>
+        </div>
+        <div class="benefit-grid">
+          <div class="benefit-card dark">
+            <div class="benefit-icon"><%- icons.shieldCheck %></div>
+            <h3><%= t('benefit1_title') %></h3>
+            <p><%= t('benefit1_desc') %></p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><%- icons.rupee %></div>
+            <h3><%= t('benefit2_title') %></h3>
+            <p><%= t('benefit2_desc') %></p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><%- icons.badgeCheck %></div>
+            <h3><%= t('benefit3_title') %></h3>
+            <p><%= t('benefit3_desc') %></p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><%- icons.clock %></div>
+            <h3><%= t('benefit4_title') %></h3>
+            <p><%= t('benefit4_desc') %></p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><%- icons.mapPin %></div>
+            <h3><%= t('benefit5_title') %></h3>
+            <p><%= t('benefit5_desc') %></p>
+          </div>
+          <div class="benefit-card">
+            <div class="benefit-icon"><%- icons.wrench %></div>
+            <h3><%= t('benefit6_title') %></h3>
+            <p><%= t('benefit6_desc') %></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="process">
+      <p class="section-eyebrow"><%= t('process_eyebrow') %></p>
+      <h2 class="section-title"><%= t('process_title') %></h2>
+      <div class="steps" style="margin-top:2rem">
+        <div class="step">
+          <span class="step-icon">📝</span>
+          <h3><%= t('step1_title') %></h3>
+          <p><%= t('step1_desc') %></p>
+        </div>
+        <div class="step">
+          <span class="step-icon">🔍</span>
+          <h3><%= t('step2_title') %></h3>
+          <p><%= t('step2_desc') %></p>
+        </div>
+        <div class="step">
+          <span class="step-icon">🤝</span>
+          <h3><%= t('step3_title') %></h3>
+          <p><%= t('step3_desc') %></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="why-us" id="brands">
+      <div class="page">
+        <p class="section-eyebrow"><%= t('brands_eyebrow') %></p>
+        <h2 class="section-title"><%= t('brands_title') %></h2>
+      </div>
+      <div class="brand-marquee">
+        <div class="brand-marquee-track">
+          <div class="brand-marquee-group">
+            <% BRAND_LOGOS.forEach(function(b) { %>
+              <img loading="lazy" decoding="async" src="/img/brands/<%= b.file %>" alt="<%= b.name %> logo" />
+            <% }) %>
+          </div>
+          <div class="brand-marquee-group" aria-hidden="true">
+            <% BRAND_LOGOS.forEach(function(b) { %>
+              <img loading="lazy" decoding="async" src="/img/brands/<%= b.file %>" alt="" />
+            <% }) %>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="reviews">
+      <p class="section-eyebrow"><%= t('reviews_eyebrow') %></p>
+      <h2 class="section-title"><%= t('reviews_title') %></h2>
+      <div class="review-grid">
+        <% reviews.forEach(function(r) { %>
+          <div class="review-card">
+            <div class="review-stars">
+              <% for (var i = 0; i < r.rating; i++) { %><%- icons.star %><% } %>
+            </div>
+            <p class="review-text">"<%= r.text[lang] %>"</p>
+            <div class="review-author">
+              <span class="review-avatar"><%= r.name[lang].charAt(0) %></span>
+              <div>
+                <p class="review-name"><%= r.name[lang] %></p>
+                <p class="review-location"><%= r.location[lang] %></p>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div class="page" style="text-align:center">
+        <h2 class="section-title" style="color:#fff"><%= t('cta_title') %></h2>
+        <p class="section-desc" style="color:#d3e1d5;margin-left:auto;margin-right:auto"><%= t('cta_desc') %></p>
+        <div class="hero-actions" style="justify-content:center;margin-top:1.5rem">
+          <a href="/sell-your-tractor" class="btn btn-cta"><%= t('cta_form_btn') %> <%- icons.arrowUpRight %></a>
+          <a href="tel:<%= CONTACT.phoneTel %>" class="btn" style="background:#fff;color:var(--green-800)"><%- icons.phone %> <%= CONTACT.phoneDisplay %></a>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<%- include('partials/footer') %>

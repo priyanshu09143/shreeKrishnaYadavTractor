@@ -1,0 +1,23 @@
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <p class="footer-brand"><%= t('brand_name') %> <%= t('brand_sub') %></p>
+      <p class="footer-location"><%= CONTACT.address %></p>
+      <a href="<%= CONTACT.mapsUrl %>" target="_blank" rel="noreferrer" class="footer-location" style="text-decoration:underline"><%= t('footer_get_directions') %></a>
+    </div>
+    <div class="footer-links">
+      <a href="/about"><%= t('nav_about') %></a>
+      <a href="/services"><%= t('nav_services') %></a>
+      <a href="/contact"><%= t('nav_contact') %></a>
+      <a href="/terms"><%= t('nav_terms') %></a>
+    </div>
+    <div class="footer-right">
+      <p class="footer-contact-label"><%= t('footer_talk') %></p>
+      <a href="tel:<%= CONTACT.phoneTel %>" class="footer-phone"><%= CONTACT.phoneDisplay %></a>
+      <p class="footer-location"><a href="mailto:<%= CONTACT.email %>"><%= CONTACT.email %></a></p>
+    </div>
+  </div>
+</footer>
+<a href="https://wa.me/<%= CONTACT.whatsapp %>" target="_blank" rel="noreferrer" class="whatsapp-fab" aria-label="WhatsApp"><%- icons.whatsapp %></a>
+</body>
+</html>

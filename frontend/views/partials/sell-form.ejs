@@ -1,0 +1,86 @@
+<% if (submitted) { %>
+  <div class="form" style="align-items:flex-start">
+    <span class="brand-mark" style="background:var(--green-tint-2);color:var(--green-600)"><%- icons.badgeCheck %></span>
+    <h3 class="section-title" style="font-size:1.4rem;margin-top:1rem"><%= t('success_title') %></h3>
+    <p class="muted" style="margin-top:0.5rem"><%= t('success_desc') %></p>
+    <a href="tel:<%= CONTACT.phoneTel %>" class="btn btn-primary" style="margin-top:1.5rem"><%- icons.phone %> <%= t('success_cta') %></a>
+  </div>
+<% } else { %>
+<form class="form" method="POST" action="<%= formAction %>" enctype="multipart/form-data">
+  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--green-border);padding-bottom:1rem;margin-bottom:0.4rem">
+    <h3 class="section-title" style="font-size:1.3rem"><%= t('form_title') %></h3>
+    <span class="brand-mark" style="background:var(--green-tint-2);color:var(--green-600)"><%- icons.tractor %></span>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label><%= t('label_brand') %></label>
+      <select required name="brand">
+        <option value=""><%= t('placeholder_select_brand') %></option>
+        <% BRANDS.forEach(function(b) { %>
+          <option value="<%= b %>" <%= form.brand === b ? 'selected' : '' %>><%= b %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div>
+      <label><%= t('label_model') %></label>
+      <input required name="model" placeholder="<%= t('placeholder_model') %>" value="<%= form.model || '' %>" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label><%= t('label_year') %></label>
+      <input required type="number" name="year" min="1970" max="<%= new Date().getFullYear() %>" placeholder="2020" value="<%= form.year || '' %>" />
+    </div>
+    <div>
+      <label><%= t('label_hours') %></label>
+      <input type="number" name="hours_used" min="0" placeholder="1200" value="<%= form.hours_used || '' %>" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label><%= t('label_condition') %></label>
+      <select name="condition">
+        <% CONDITIONS.forEach(function(c) { %>
+          <option value="<%= c.value %>" <%= form.condition === c.value ? 'selected' : '' %>><%= c[lang] %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div>
+      <label><%= t('label_price') %></label>
+      <input required type="number" name="asking_price" min="0" placeholder="500000" value="<%= form.asking_price || '' %>" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label><%= t('label_location') %></label>
+      <input required name="location" placeholder="<%= t('placeholder_location') %>" value="<%= form.location || '' %>" />
+    </div>
+    <div>
+      <label><%= t('label_photo') %></label>
+      <input type="file" name="image" accept="image/*" />
+    </div>
+  </div>
+
+  <div style="margin:1.25rem 0 0.5rem;border-top:1px solid var(--green-border);padding-top:1.25rem">
+    <p class="tractor-brand-label" style="margin:0"><%= t('your_info_label') %></p>
+  </div>
+
+  <div class="form-row">
+    <div>
+      <label><%= t('label_name') %></label>
+      <input required name="seller_name" placeholder="<%= t('placeholder_name') %>" value="<%= form.seller_name || '' %>" />
+    </div>
+    <div>
+      <label><%= t('label_phone') %></label>
+      <input required type="tel" name="seller_phone" placeholder="<%= t('placeholder_phone') %>" value="<%= form.seller_phone || '' %>" />
+    </div>
+  </div>
+
+  <% if (error) { %><p class="error"><%= error %></p><% } %>
+  <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center"><%= t('submit_btn') %> <%- icons.arrowUpRight %></button>
+</form>
+<% } %>

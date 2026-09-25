@@ -63,22 +63,36 @@
       </div>
     </section>
 
+    <section class="page" id="home-services">
+      <div class="split-section">
+        <div class="split-image">
+          <img src="/img/handshake.jpg" alt="<%= lang === 'en' ? 'Farmer shaking hands after a fair tractor deal' : 'ट्रैक्टर सौदे के बाद किसान का हाथ मिलाना' %>" loading="lazy" decoding="async" />
+        </div>
+        <div>
+          <p class="section-eyebrow"><%= t('home_services_eyebrow') %></p>
+          <h2 class="section-title"><%= t('home_services_title') %></h2>
+          <p class="section-desc"><%= t('home_services_desc') %></p>
+          <a href="/services" class="btn btn-primary" style="margin-top:1.5rem"><%= t('home_services_cta') %> <%- icons.arrowUpRight %></a>
+        </div>
+      </div>
+    </section>
+
     <section class="page" id="process">
       <p class="section-eyebrow"><%= t('process_eyebrow') %></p>
       <h2 class="section-title"><%= t('process_title') %></h2>
       <div class="steps" style="margin-top:2rem">
         <div class="step">
-          <span class="step-icon">📝</span>
+          <div class="step-photo"><img src="/img/steps/step1-form.jpg" alt="<%= lang === 'en' ? 'Filling in tractor sale paperwork' : 'ट्रैक्टर बेचने का फॉर्म भरते हुए' %>" style="object-position:center 25%" loading="lazy" decoding="async" /></div>
           <h3><%= t('step1_title') %></h3>
           <p><%= t('step1_desc') %></p>
         </div>
         <div class="step">
-          <span class="step-icon">🔍</span>
+          <div class="step-photo"><img src="/img/steps/step2-inspection.jpg" alt="<%= lang === 'en' ? 'Free tractor inspection by our team' : 'हमारी टीम द्वारा मुफ्त ट्रैक्टर निरीक्षण' %>" style="object-position:center 30%" loading="lazy" decoding="async" /></div>
           <h3><%= t('step2_title') %></h3>
           <p><%= t('step2_desc') %></p>
         </div>
         <div class="step">
-          <span class="step-icon">🤝</span>
+          <div class="step-photo"><img src="/img/steps/step3-payment.jpg" alt="<%= lang === 'en' ? 'Direct cash payment after the tractor deal' : 'ट्रैक्टर सौदे के बाद सीधा नकद भुगतान' %>" style="object-position:center 15%" loading="lazy" decoding="async" /></div>
           <h3><%= t('step3_title') %></h3>
           <p><%= t('step3_desc') %></p>
         </div>

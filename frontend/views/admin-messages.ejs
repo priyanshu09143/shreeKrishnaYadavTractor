@@ -5,6 +5,7 @@
     <h1><%= t('admin_messages_title') %></h1>
     <%- include('partials/admin-nav') %>
 
+    <div class="table-scroll">
     <table class="admin-table">
       <thead>
         <tr>
@@ -37,6 +38,7 @@
         <% }) %>
       </tbody>
     </table>
+    </div>
     <% if (messages.length === 0) { %>
       <p class="muted" style="margin-top:1.5rem"><%= lang === 'en' ? 'No messages yet.' : 'अभी तक कोई संदेश नहीं है।' %></p>
     <% } %>

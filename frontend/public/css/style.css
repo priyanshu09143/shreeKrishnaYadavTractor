@@ -44,6 +44,10 @@ a {
   text-decoration: none;
 }
 
+img, svg {
+  max-width: 100%;
+}
+
 h1, h2, h3, .font-heading {
   font-family: "Hind", "Segoe UI", system-ui, sans-serif;
   letter-spacing: -0.02em;
@@ -116,11 +120,57 @@ h1, h2, h3, .font-heading {
   color: #d9e5d9;
 }
 
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.25rem;
+  align-items: center;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
   gap: 1.6rem;
   flex-wrap: wrap;
+}
+
+@media (max-width: 860px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    order: 3;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 0.6rem 0.25rem;
+  }
+
+  .nav-links .nav-phone,
+  .nav-links .lang-toggle {
+    align-self: flex-start;
+  }
+
+  .nav-links .btn-cta {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
 }
 
 .nav-links a {
@@ -436,7 +486,7 @@ h1, h2, h3, .font-heading {
   flex-direction: column;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -562,7 +612,7 @@ h1, h2, h3, .font-heading {
 .admin-services-grid {
   margin-top: 1.5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.25rem;
 }
 
@@ -571,14 +621,18 @@ h1, h2, h3, .font-heading {
 }
 
 /* Admin table */
+.table-scroll {
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  border-radius: 1rem;
+  border: 1px solid var(--green-border);
+}
+
 .admin-table {
   width: 100%;
+  min-width: 640px;
   border-collapse: collapse;
-  margin-top: 1.5rem;
   background: var(--card);
-  border: 1px solid var(--green-border);
-  border-radius: 1rem;
-  overflow: hidden;
 }
 
 .admin-table th,
@@ -709,19 +763,37 @@ h1, h2, h3, .font-heading {
 .step {
   background: var(--card);
   border: 1px solid var(--green-border);
-  border-radius: 10px;
-  padding: 1.25rem;
+  border-radius: 14px;
+  overflow: hidden;
   text-align: center;
+  box-shadow: 0 8px 20px rgba(19, 62, 43, 0.05);
 }
 
-.step-icon {
-  font-size: 2rem;
+.step-photo {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.step-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .step h3 {
   color: var(--heading-dark);
-  margin: 0.5rem 0;
+  margin: 1rem 0 0.5rem;
+  padding: 0 1.25rem;
   font-size: 1rem;
+}
+
+.step p {
+  padding: 0 1.25rem 1.25rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
 }
 
 /* Brand marquee */
@@ -847,6 +919,33 @@ h1, h2, h3, .font-heading {
   background-position: center;
   background-repeat: no-repeat;
   padding: 3.5rem 0;
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .split-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.split-image {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(19, 62, 43, 0.12);
+}
+
+.split-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  display: block;
 }
 
 .about-prose {

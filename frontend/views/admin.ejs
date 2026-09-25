@@ -4,6 +4,7 @@
   <div class="page">
     <h1><%= t('admin_title') %></h1>
     <%- include('partials/admin-nav') %>
+    <div class="table-scroll">
     <table class="admin-table">
       <thead>
         <tr>
@@ -35,6 +36,7 @@
         <% }) %>
       </tbody>
     </table>
+    </div>
   </div>
 </main>
 <%- include('partials/footer') %>

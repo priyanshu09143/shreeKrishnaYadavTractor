@@ -6,13 +6,16 @@
       <span class="brand-sub"><%= t('brand_sub') %> · <%= LOCATION %></span>
     </span>
   </a>
-  <nav class="nav-links">
+  <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+    <span class="nav-toggle-icon-menu"><%- icons.menu %></span>
+    <span class="nav-toggle-icon-close" style="display:none"><%- icons.close %></span>
+  </button>
+  <nav class="nav-links" id="navLinks">
     <a href="/" class="<%= currentPath === '/' ? 'active' : '' %>"><%= t('nav_home') %></a>
     <a href="/services" class="<%= currentPath === '/services' ? 'active' : '' %>"><%= t('nav_services') %></a>
     <a href="/about" class="<%= currentPath === '/about' ? 'active' : '' %>"><%= t('nav_about') %></a>
     <a href="/contact" class="<%= currentPath === '/contact' ? 'active' : '' %>"><%= t('nav_contact') %></a>
     <% if (user && user.role === 'admin') { %>
-      <a href="/admin/dashboard" class="<%= currentPath.startsWith('/admin') ? 'active' : '' %>"><%= t('nav_admin') %></a>
       <form action="/logout" method="POST" style="display:inline">
         <button type="submit" class="link-btn"><%= t('nav_logout') %></button>
       </form>
@@ -25,3 +28,18 @@
     <a href="/sell-your-tractor" class="btn btn-cta btn-sm"><%= t('nav_sell_cta') %> <%- icons.arrowUpRight %></a>
   </nav>
 </header>
+<script>
+  // Progressive enhancement — all links work fine without this; it only
+  // toggles visibility of the already-rendered nav on small screens.
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    if (!toggle || !links) return;
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.querySelector('.nav-toggle-icon-menu').style.display = open ? 'none' : '';
+      toggle.querySelector('.nav-toggle-icon-close').style.display = open ? '' : 'none';
+    });
+  })();
+</script>

@@ -12,14 +12,14 @@ const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 5 *
 function homeMeta(lang) {
   return lang === "en"
     ? {
-        title: "Sell Your Tractor For A Fair Price | Shree Krishna Yadav Tractors",
+        title: "Sell Your Old Tractor in Rajasthan | Shree Krishna Yadav Tractors, Jaipur",
         description:
-          "Sell your old tractor to Shree Krishna Yadav Tractors — free inspection, fair price, direct payment with no middleman. Fill the form today.",
+          "Got an old tractor sitting idle? Shree Krishna Yadav Tractors buys tractors of every brand and condition across Jaipur, Sikar, Ajmer and Alwar — free on-site inspection, a fair offer within 24 hours, no broker, no deductions. We also help with insurance, RTO transfer and finance. Fill the form and get a call today.",
       }
     : {
-        title: "ट्रैक्टर बेचें, सही दाम पाएं | श्री कृष्णा यादव ट्रैक्टर्स",
+        title: "पुराना ट्रैक्टर बेचें राजस्थान में | श्री कृष्णा यादव ट्रैक्टर्स, जयपुर",
         description:
-          "अपना पुराना ट्रैक्टर श्री कृष्णा यादव ट्रैक्टर्स को बेचें — मुफ्त निरीक्षण, सही कीमत, बिना दलाल के सीधा भुगतान। आज ही फॉर्म भरें।",
+          "घर में पुराना ट्रैक्टर खाली पड़ा है? श्री कृष्णा यादव ट्रैक्टर्स जयपुर, सीकर, अजमेर और अलवर में हर ब्रांड और हर हालत का ट्रैक्टर खरीदता है — मुफ्त निरीक्षण, 24 घंटे में सही ऑफर, बिना दलाल। बीमा, आरटीओ ट्रांसफर और फाइनेंस में भी मदद करते हैं। आज ही फॉर्म भरें और कॉल पाएं।",
       };
 }
 

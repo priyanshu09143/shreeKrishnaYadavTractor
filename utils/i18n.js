@@ -71,6 +71,11 @@ const strings = {
     benefit6_title: "हर हालत का ट्रैक्टर",
     benefit6_desc: "पुराना हो या खराब हालत में — हम हर ब्रांड और हर कंडीशन का ट्रैक्टर खरीदते हैं।",
 
+    home_services_eyebrow: "ट्रैक्टर से जुड़ी हर ज़रूरत",
+    home_services_title: "बेचने के अलावा भी हम आपके साथ हैं।",
+    home_services_desc: "ट्रैक्टर का बीमा रिन्यू करवाना हो, आरटीओ में मालिकाना हक ट्रांसफर करवाना हो, या नया ट्रैक्टर खरीदने के लिए फाइनेंस चाहिए हो — हमारी टीम कागज़ी काम से लेकर बैंक तक हर कदम पर आपके साथ रहती है। जयपुर, सीकर, अजमेर और अलवर के सैकड़ों किसान परिवार पहले से इन्हीं सेवाओं का फायदा उठा चुके हैं।",
+    home_services_cta: "सभी सेवाएं देखें",
+
     process_eyebrow: "प्रक्रिया बेहद आसान है",
     process_title: "सिर्फ 3 आसान चरणों में अपना ट्रैक्टर बेचें।",
     step1_title: "1. फॉर्म भरें",
@@ -205,7 +210,7 @@ const strings = {
     hero_h1_a: "Sell your old tractor at the ",
     hero_h1_highlight: "right price",
     hero_h1_b: ".",
-    hero_desc: "Fill the form, our team will inspect your tractor for free and give you a fair offer within 24 hours — no middleman, direct payment.",
+    hero_desc: "Your tractor may be old or barely running anymore — it still deserves a fair price. Fill the form below and our team will visit your village to inspect it in person, then give you a fair offer within 24 hours. No middleman, no deductions — the full amount lands straight in your account.",
 
     sell_hero_eyebrow: "The easiest way to sell your old tractor",
     sell_hero_h1_a: "Sell your tractor in just ",
@@ -245,7 +250,7 @@ const strings = {
 
     whyus_eyebrow: "Why Sell Your Tractor To Us",
     whyus_title: "A trusted, easy and direct deal.",
-    whyus_desc: "Clear communication, honest inspection and full support even after the sale — that's why thousands of farming families sell their tractor to us again and again.",
+    whyus_desc: "Clear communication, honest inspection and full support even after the sale — that's why thousands of farming families sell their tractor to us again and again. No back-and-forth, no last-minute cuts to the price — whatever we quote after inspection is what you get, right to the end.",
     benefit1_title: "Free Inspection",
     benefit1_desc: "Our team comes to you and does a full check of the engine, hydraulics, tyres and PTO.",
     benefit2_title: "No Middleman, Direct Payment",
@@ -258,6 +263,11 @@ const strings = {
     benefit5_desc: "Our team reaches Jaipur, Sikar, Ajmer, Alwar and all nearby districts.",
     benefit6_title: "Any Condition Tractor",
     benefit6_desc: "Old or in poor condition — we buy every brand and every condition of tractor.",
+
+    home_services_eyebrow: "Everything Your Tractor Needs",
+    home_services_title: "We're with you beyond the sale, too.",
+    home_services_desc: "Renewing your tractor's insurance, transferring ownership at the RTO, or arranging finance for a new tractor — our team walks you through every step, from paperwork to the bank. Hundreds of farming families across Jaipur, Sikar, Ajmer and Alwar already rely on us for these.",
+    home_services_cta: "See All Services",
 
     process_eyebrow: "The Process Is Super Simple",
     process_title: "Sell your tractor in just 3 easy steps.",

@@ -16,6 +16,9 @@ const { IMAGE_FALLBACK, HERO_IMAGE } = require("./frontend/api");
 
 const PORT = process.env.PORT || 3000;
 const SITE_URL = process.env.SITE_URL || `http://localhost:${PORT}`;
+// Cache-busts /css/style.css (and any other asset using it) on every deploy —
+// otherwise browsers keep serving a stale stylesheet after a CSS change.
+const ASSET_VERSION = Date.now();
 
 async function start() {
   const db = await getDb();
@@ -56,6 +59,7 @@ async function start() {
     res.locals.IMAGE_FALLBACK = IMAGE_FALLBACK;
     res.locals.HERO_IMAGE = HERO_IMAGE;
     res.locals.CONTACT = CONTACT;
+    res.locals.ASSET_VERSION = ASSET_VERSION;
     next();
   });
 
